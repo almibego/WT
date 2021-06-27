@@ -24,7 +24,7 @@ namespace WT1.Controllers
         public IActionResult Index()
         {
             ViewData["Text"] = "Лабораторная работа 2";
-            ViewData["Lst"] = new SelectList(_listDemo, "ListItemValue", "ListItemText");
+            ViewData["List"] = new SelectList(_listDemo, "ListItemValue", "ListItemText");
             return View();
         }
     }
