@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WT1", "WT1\WT1.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebLabsV05.DAL", "WebLabsV05.DAL\WebLabsV05.DAL.csproj", "{C043FE0D-7937-4CE3-9752-862CD09D9803}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WT1.Tests", "WT1.Tests\WT1.Tests.csproj", "{89A77589-5EED-44B4-8B0C-C47C154A8351}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C043FE0D-7937-4CE3-9752-862CD09D9803}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C043FE0D-7937-4CE3-9752-862CD09D9803}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C043FE0D-7937-4CE3-9752-862CD09D9803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89A77589-5EED-44B4-8B0C-C47C154A8351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A77589-5EED-44B4-8B0C-C47C154A8351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A77589-5EED-44B4-8B0C-C47C154A8351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A77589-5EED-44B4-8B0C-C47C154A8351}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

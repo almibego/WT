@@ -7,22 +7,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebLabsV05.DAL.Entities;
+using WT1.Models;
 
 namespace WT1.Controllers
 {
     public class ProductController : Controller
     {
-        List<PCPart> _pcParts;
+        public List<PCPart> _pcParts;
         List<PCPartGroup> _pcPartGroups;
+
+        int _pageSize;
 
         public ProductController()
         {
+            _pageSize = 3;
             SetupData();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? group, int pageNo = 1)
         {
-            return View(_pcParts);
+            var pcPartsFiltered = _pcParts
+                                .Where(d => !group.HasValue || d.PCPartGroupId == group.Value);
+
+            // Поместить список групп во ViewData
+            ViewData["Groups"] = _pcPartGroups;
+            // Получить id текущей группы и поместить в TempData
+            ViewData["CurrentGroup"] = group ?? 0;
+
+            return View(ListViewModel<PCPart>.GetModel(pcPartsFiltered, pageNo, _pageSize));            
         }
 
         /// <summary>
