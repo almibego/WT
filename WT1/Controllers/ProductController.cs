@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using WebLabsV05.DAL.Data;
 using WebLabsV05.DAL.Entities;
 using WT1.Models;
+using WT1.Extensions;
+
 
 namespace WT1.Controllers
 {
@@ -24,6 +22,9 @@ namespace WT1.Controllers
             SetupData();
         }
 
+
+        [Route("Catalog")]
+        [Route("Catalog/Page_{pageNo}")]
         public IActionResult Index(int? group, int pageNo = 1)
         {
             var pcPartsFiltered = _pcParts
@@ -34,7 +35,11 @@ namespace WT1.Controllers
             // Получить id текущей группы и поместить в TempData
             ViewData["CurrentGroup"] = group ?? 0;
 
-            return View(ListViewModel<PCPart>.GetModel(pcPartsFiltered, pageNo, _pageSize));            
+            var model = ListViewModel<PCPart>.GetModel(pcPartsFiltered, pageNo, _pageSize);
+            if (Request.IsAjaxRequest())
+                return PartialView("_listpartial", model);
+            else
+                return View(model);
         }
 
         /// <summary>
