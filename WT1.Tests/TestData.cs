@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using WT1.Controllers;
+using WebLabsV05.DAL.Data;
 using WebLabsV05.DAL.Entities;
 using Xunit;
 
@@ -9,6 +10,21 @@ namespace WT1.Tests
 {
     public class TestData
     {
+        public static void FillContext(ApplicationDbContext context)
+        {
+            context.PCPartGroups.Add(new PCPartGroup
+            { GroupName = "fake group" });
+            context.AddRange(new List<PCPart>
+            {
+                new PCPart{ PCPartId=1, PCPartGroupId=1},
+                new PCPart{ PCPartId=2, PCPartGroupId=1},
+                new PCPart{ PCPartId=3, PCPartGroupId=2},
+                new PCPart{ PCPartId=4, PCPartGroupId=2},
+                new PCPart{ PCPartId=5, PCPartGroupId=3}
+            });
+            context.SaveChanges();
+        }
+
         public static List<PCPart> GetPCPartsList()
         {
             return new List<PCPart>

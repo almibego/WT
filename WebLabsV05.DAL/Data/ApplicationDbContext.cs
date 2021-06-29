@@ -10,8 +10,9 @@ namespace WebLabsV05.DAL.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public
-        ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public DbSet<PCPart> PCParts { get; set; }
+        public DbSet<PCPartGroup> PCPartGroups { get; set; }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
     }
